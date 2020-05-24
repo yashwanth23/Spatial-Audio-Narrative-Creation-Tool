@@ -19,7 +19,7 @@ using UnityEngine;
 public class StandardTimedAudio : MonoBehaviour
 {
     public GameObject BackgroundAudio;
-    public GameObject[] SpatialAudioElements;
+    public GameObject[] SpatialAudioSources;
 
     //Creating custom struct for Input values of interactive stationary audio sources
     //Add System.Serializable to make it appear on the editor
@@ -87,14 +87,14 @@ public class StandardTimedAudio : MonoBehaviour
         if (storyTimer >= start_time && storyTimer <= start_time + Time.deltaTime)
         {
             //When timer passes the mentioned time of the audio source, it triggers the audio source movement based on the variables below
-            SpatialAudioElements[index].GetComponent<AudioMovementTimed>().isPlayed = false;
-            SpatialAudioElements[index].GetComponent<AudioMovementTimed>().near = false;
-            SpatialAudioElements[index].GetComponent<AudioMovementTimed>().duration = duration;
+            SpatialAudioSources[index].GetComponent<AudioMovementTimed>().isPlayed = false;
+            SpatialAudioSources[index].GetComponent<AudioMovementTimed>().near = false;
+            SpatialAudioSources[index].GetComponent<AudioMovementTimed>().duration = duration;
 
             //Play audio clip that is attached on the script in the inspector
-            SpatialAudioElements[index].GetComponent<AudioSource>().clip = clip;
-            SpatialAudioElements[index].GetComponent<AudioSource>().Play();
-            SpatialAudioElements[index].GetComponent<AudioSource>().volume = volume;
+            SpatialAudioSources[index].GetComponent<AudioSource>().clip = clip;
+            SpatialAudioSources[index].GetComponent<AudioSource>().Play();
+            SpatialAudioSources[index].GetComponent<AudioSource>().volume = volume;
 
         }
     }
